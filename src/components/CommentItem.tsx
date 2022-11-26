@@ -1,4 +1,4 @@
-import { Comment } from "../model/comment"
+import { Comment, CommentStatus } from "../model/comment"
 import './CommentItem.css'
 
 
@@ -18,6 +18,11 @@ export default function CommentItem({ comment }: CommentItemProps) {
             </span>
             <textarea className="CommentItem-content" name="CommentItem-content" id="" cols={19} rows={5}>{comment.content}</textarea>
             <span className="CommentItem-timeCreated"><h4>Time created</h4> {comment.timeCreation}</span>
+            <span>
+                <label htmlFor="CommentItem-status">Status {CommentStatus[comment.status]}</label>
+                <input type="radio" id="CommentItem-status" name="CommentItem-status" value={comment.status} />
+
+            </span>
         </section>
     )
 

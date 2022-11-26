@@ -9,5 +9,7 @@ export interface Indentifiable {
 
 
 export interface CommentListener {
-    (comment: Comment) : void;
+    (comment: Comment): void;
 }
+
+export type Optional<T> = T | undefined
