@@ -26,22 +26,36 @@ export default class CommentInput extends Component<CommentInputProps, CommentIn
         timeCreation: this.props.comment?.timeCreation || ''
     }
 
-    handeleCommentSubmit = (event:React.FormEvent)=>{
+    handeleCommentSubmit = (event: React.FormEvent) => {
         event.preventDefault();
+       
         this.props.onCommentSubmit(
             new Comment(
                 this.state.title,
                 this.state.content,
                 parseInt(this.state.status),
-                toIsoDate(new Date(this.state.timeCreation)),
+                toIsoDate(new Date()),
                 false,
                 this.props.comment?.id
             )
+
+
         )
+
+        this.setState({
+            title:'',
+            content:''
+        })
+
+
+
     }
     handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const fieldName = event.target.name;
         this.setState({ [fieldName]: event.target.value } as unknown as CommentInputState);
+
+
+
     }
     render() {
         return (
@@ -51,15 +65,14 @@ export default class CommentInput extends Component<CommentInputProps, CommentIn
                 <label htmlFor='title'>Title : </label>
                 <input type='text' id='title' name='title' value={this.state.title}
                     onChange={this.handleChange} />
-                    <input type='text' id='id' name='id' defaultValue={this.props.comment?.id || ''} disabled />
+                <input type='text' id='id' name='id' value={this.props.comment?.id || ''} disabled />
                 <label htmlFor='content'>Content : </label>
-                <textarea  id='content' name='content' defaultValue={this.state.content} cols={19} rows={5}
+                <textarea id='content' name='content' value={this.state.content} cols={19} rows={5}
                     onChange={this.handleChange} ></textarea>
-                     <label htmlFor='deadline'>What's the deadline?</label>
-                <input type='date' id='timeCreation' name='timeCreation' value={this.state.timeCreation}
-                    onChange={this.handleChange} />
-                <button className='CommentInput-button-submit' type='submit'>Submit</button>
                
+                <button className='CommentInput-button-submit' type='submit'>Submit</button>
+
+
             </form>
 
         )
