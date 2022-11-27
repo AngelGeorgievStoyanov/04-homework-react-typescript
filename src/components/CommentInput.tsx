@@ -22,7 +22,7 @@ export default class CommentInput extends Component<CommentInputProps, CommentIn
     state: Readonly<CommentInputState> = {
         title: this.props.comment?.title || '',
         content: this.props.comment?.content || '',
-        status: this.props.comment?.status.toString() || '1',
+        status: this.props.comment?.status.toString() || '',
         timeCreation: this.props.comment?.timeCreation || ''
     }
 
@@ -42,10 +42,6 @@ export default class CommentInput extends Component<CommentInputProps, CommentIn
 
         )
 
-        this.setState({
-            title:'',
-            content:''
-        })
 
 
 

@@ -13,10 +13,10 @@ interface CommentItemProps {
 export default function CommentItem({ comment,onDeleteComment,onEditComment }: CommentItemProps) {
 
 
-    function handleEdit(event: React.MouseEvent) {
-        console.log(event.target, comment)
-        onEditComment(comment)
-    }
+    // function handleEdit(event: React.MouseEvent) {
+    //     console.log(event.target, comment)
+    //     onEditComment(comment)
+    // }
 
 
     function handleDelete(event: React.MouseEvent) {
@@ -41,7 +41,7 @@ export default function CommentItem({ comment,onDeleteComment,onEditComment }: C
 
             </span>
 
-            <button className="CommentItem-button" onClick={handleEdit} >Edit</button>
+            <button className="CommentItem-button" onClick={()=>onEditComment(comment)} >Edit</button>
             <button className="CommentItem-button" onClick={handleDelete} >Delete</button>
 
 
