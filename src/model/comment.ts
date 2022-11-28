@@ -11,7 +11,7 @@ export class Comment {
         public content:string,
         public status: CommentStatus=CommentStatus.Active,
         public timeCreation: string=toIsoDate(new Date()),
-        public timeEdited:boolean | string=toIsoDate(new Date()),
+        public timeEdited:false | string=toIsoDate(new Date()),
         public id?:IdType
     ){}
 }

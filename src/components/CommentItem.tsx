@@ -10,7 +10,7 @@ interface CommentItemProps {
 }
 
 
-export default function CommentItem({ comment,onDeleteComment,onEditComment }: CommentItemProps) {
+export default function CommentItem({ comment, onDeleteComment, onEditComment }: CommentItemProps) {
 
 
     // function handleEdit(event: React.MouseEvent) {
@@ -27,21 +27,21 @@ export default function CommentItem({ comment,onDeleteComment,onEditComment }: C
 
 
         <section className="CommentItem">
-            <span className="CommentItem-id">{comment.id}
-                <span className="CommentItem-title">{comment.title}</span>
-            </span>
-            <p className="CommentItem-content"  id="CommentItem-content">{comment.content}</p>
+
+            <h3 className="CommentItem-title">Title: {comment.title}</h3>
+
+            <p className="CommentItem-content" id="CommentItem-content">Content: {comment.content}</p>
             <span className="CommentItem-timeCreated"><h4>Time created</h4> {comment.timeCreation}</span>
+            {comment.timeEdited !==undefined ? <span className="CommentItem-timeCreated"><h4>Time last edited</h4> {comment.timeEdited}</span> : ''}
             <span>
                 <label htmlFor="CommentItem-status">Status Active</label>
-                <input type="radio" id="CommentItem-status" name="CommentItem-status" defaultChecked value={CommentStatus.Active} />
+                <input type="radio" name={'CommentItem-status-' + comment.id} defaultChecked value={CommentStatus.Active} />
                 <label htmlFor="CommentItem-status">Status Suspend</label>
-
-                <input type="radio" id="CommentItem-status" name="CommentItem-status" value={CommentStatus.Suspended} />
+                <input type="radio" name={'CommentItem-status-' + comment.id} value={CommentStatus.Suspended} />
 
             </span>
 
-            <button className="CommentItem-button" onClick={()=>onEditComment(comment)} >Edit</button>
+            <button className="CommentItem-button" onClick={() => onEditComment(comment)} >Edit</button>
             <button className="CommentItem-button" onClick={handleDelete} >Delete</button>
 
 

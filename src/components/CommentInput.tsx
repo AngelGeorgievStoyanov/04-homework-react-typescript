@@ -28,20 +28,39 @@ export default class CommentInput extends Component<CommentInputProps, CommentIn
 
     handeleCommentSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-       
-        this.props.onCommentSubmit(
-            new Comment(
-                this.state.title,
-                this.state.content,
-                parseInt(this.state.status),
-                toIsoDate(new Date()),
-                false,
-                this.props.comment?.id
+
+
+        if (this.props.comment?.id !== undefined) {
+            this.props.onCommentSubmit(
+                new Comment(
+                    this.state.title,
+                    this.state.content,
+                    parseInt(this.state.status),
+                    this.state.timeCreation,
+                    toIsoDate(new Date()),
+                    this.props.comment?.id
+                )
+
+
             )
 
 
-        )
+        } else {
 
+            this.props.onCommentSubmit(
+                new Comment(
+                    this.state.title,
+                    this.state.content,
+                    parseInt(this.state.status),
+                    toIsoDate(new Date()),
+                    false,
+                    this.props.comment?.id
+                )
+
+
+            )
+
+        }
 
 
 
@@ -56,16 +75,19 @@ export default class CommentInput extends Component<CommentInputProps, CommentIn
     render() {
         return (
             <form className="CommentInput" onSubmit={this.handeleCommentSubmit}>
+
                 <label htmlFor='id'>ID</label>
                 <input type='text' id='id' name='id' defaultValue={this.props.comment?.id || ''} disabled />
+
                 <label htmlFor='title'>Title : </label>
                 <input type='text' id='title' name='title' value={this.state.title}
                     onChange={this.handleChange} />
-                <input type='text' id='id' name='id' value={this.props.comment?.id || ''} disabled />
+
                 <label htmlFor='content'>Content : </label>
                 <textarea id='content' name='content' value={this.state.content} cols={19} rows={5}
                     onChange={this.handleChange} ></textarea>
-               
+
+
                 <button className='CommentInput-button-submit' type='submit'>Submit</button>
 
 

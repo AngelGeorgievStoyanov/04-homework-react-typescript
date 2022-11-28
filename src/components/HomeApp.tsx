@@ -28,7 +28,7 @@ export default class HomeApp extends Component<{}, AppState>{
         this.state.comments.forEach(comment => comment.id = ++this.nextId)
     }
 
-    handleTodoSubmit = (comment: Comment) => {
+    handleCommentSubmit = (comment: Comment) => {
         if(comment.id){
           
             this.setState(({comments})=>({comments: comments.map(cmt=>cmt.id===comment.id ? comment:cmt )}))
@@ -51,7 +51,7 @@ export default class HomeApp extends Component<{}, AppState>{
 
         return (
             <div className="HomeApp">HOME APP
-                <CommentInput key={this.state.editedComment?.id} comment={this.state.editedComment } onCommentSubmit={this.handleTodoSubmit} />
+                <CommentInput key={this.state.editedComment?.id} comment={this.state.editedComment } onCommentSubmit={this.handleCommentSubmit} />
                 <CommentList comments={this.state.comments} onDeleteComment={this.handleDeleteComment} onEditComment={this.handleEditComment} />
             </div>
         )
