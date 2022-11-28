@@ -1,5 +1,5 @@
 import { Comment } from "../model/comment";
-
+import { Filter } from '../components/HomeApp'
 
 export type IdType = number | undefined;
 
@@ -13,3 +13,8 @@ export interface CommentListener {
 }
 
 export type Optional<T> = T | undefined
+
+
+export interface ChangeFilterListener {
+    (filter: Filter): void
+}

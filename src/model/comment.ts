@@ -9,7 +9,7 @@ export class Comment {
     constructor(
         public title:string,
         public content:string,
-        public status: CommentStatus=CommentStatus.Active,
+        public status:  CommentStatus.Active |CommentStatus.Suspended,
         public timeCreation: string=toIsoDate(new Date()),
         public timeEdited:false | string=toIsoDate(new Date()),
         public id?:IdType
